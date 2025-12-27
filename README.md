@@ -2,6 +2,9 @@
 
 This project demonstrates **how I built a complete CI/CD pipeline from scratch**, starting with a simple Python app and culminating in a **live, deployed application** using GitHub, Jenkins, Docker, and AWS.
 
+I built an end-to-end CI/CD pipeline using GitHub Actions for CI and Jenkins for CD. The application is Dockerized and deployed automatically on a Linux server. 
+I also handled issues like Docker permissions, Jenkins workspace corruption, Docker cache problems, and AWS security configuration.
+
 This README explains **everything step by step**.
 
 ---
@@ -38,7 +41,7 @@ This project solves that by using:
 
 # 🛠️ 3. Tools Used
 
-| Purpose | Tool |
+| Purpose     | Tool |
 |-------------|------|
 | Source Code | GitHub |
 | CI          | GitHub Actions |
@@ -71,28 +74,9 @@ New container deployed
    ↓
 Website updated automatically
 ```
-
 ---
 
-# 📂 5. Project Structure
-
-```
-devops-cicd-automation/
-├── app/
-│   ├── app.py
-│   └── requirements.txt
-├── tests/
-│   └── test_app.py
-├── Dockerfile
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-└── README.md
-```
-
----
-
-# 🧪 6. CI – GitHub Actions (What happens)
+# 🧪 5. CI – GitHub Actions 
 
 CI runs **automatically** when code is pushed.
 
@@ -107,7 +91,7 @@ If tests fail → deployment stops.
 
 ---
 
-# 🚀 7. CD – Jenkins (What happens)
+# 🚀 6. CD – Jenkins (What happens)
 
 Jenkins does the deployment.
 
@@ -127,7 +111,7 @@ docker run -d -p 5000:5000 --name cicd-app cicd-app:latest
 
 ---
 
-# 🐳 8. Docker Explanation
+# 🐳 7. Docker Explanation
 
 - App is packed inside a Docker image
 - Same image runs everywhere
@@ -137,7 +121,7 @@ Dockerfile builds the image and exposes port `5000`.
 
 ---
 
-# ☁️ 9. AWS Setup
+# ☁️ 8. AWS Setup
 
 - Ubuntu EC2 instance created
 - Jenkins runs inside Docker on EC2
@@ -153,20 +137,20 @@ Custom TCP | Port 5000 | 0.0.0.0/0
 
 ---
 
-# ⚠️ 10. Problems I Faced & Fixed (Real DevOps)
+# ⚠️ 9. Problems I Faced & Fixed
 
-| Problem | Fix |
-|------|----|
-| pytest not found | Installed pytest |
-| docker not found | Installed Docker CLI in Jenkins |
-| permission denied | Ran Jenkins as root |
+| Problem                  | Fix |
+|--------------------------|----|
+| pytest not found         | Installed pytest |
+| docker not found         | Installed Docker CLI in Jenkins |
+| permission denied        | Ran Jenkins as root |
 | Jenkins workspace broken | Deleted workspace |
-| code not updating | Disabled Docker cache |
-| site not opening | Fixed AWS security group |
+| code not updating        | Disabled Docker cache |
+| site not opening         | Fixed AWS security group |
 
 ---
 
-# ▶️ 11. How to clone and run this project locally
+# ▶️ 10. How to clone and run this project locally
 
 ```bash
 git clone https://github.com/Akash642-eng/devops-cicd-automation.git
@@ -182,7 +166,7 @@ http://localhost:5000
 
 ---
 
-# 🔁 12. How to update the live website (MOST IMPORTANT)
+# 🔁 11. How to update the live website
 
 1. Change code in `app.py`
 2. Run:
@@ -197,32 +181,12 @@ git push origin main
 
 ---
 
-# 🌍 13. Live Application
+# 🌍 12. Live Application
 
 ```
 http://<EC2-PUBLIC-IP>:5000
 ```
 
 ---
-
-# 🎤 14. How to explain this in interview (SHORT)
-
-> I built an end-to-end CI/CD pipeline using GitHub Actions for CI and Jenkins for CD. The application is Dockerized and deployed automatically on a Linux server. I also handled real-world issues like Docker permissions, Jenkins workspace corruption, Docker cache problems, and AWS security configuration.
-
----
-
-# 🏁 15. Conclusion
-
-This project shows:
-- Real CI/CD automation
-- Real cloud deployment
-- Real DevOps debugging
-- Production-style workflow
-
----
-
-# 👤 Author
-
-Akash  
-DevOps & Cloud Enthusiast  
+Python & DevOps Enthusiast  
 GitHub: https://github.com/Akash642-eng
